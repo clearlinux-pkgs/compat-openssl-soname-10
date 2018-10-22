@@ -1,11 +1,11 @@
 Name:           compat-openssl-soname-10
-Version:        1.0.2o
-Release:        72
+Version:        1.0.2p
+Release:        73
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
 Group:          libs/network
-Source0:        http://www.openssl.org/source/openssl-1.0.2o.tar.gz
+Source0:        http://www.openssl.org/source/openssl-1.0.2p.tar.gz
 BuildRequires:  zlib-dev
 BuildRequires:  zlib-dev32
 BuildRequires:  util-linux-extras
@@ -16,6 +16,7 @@ BuildRequires:  gcc-libstdc++32
 BuildRequires:  glibc-dev32
 BuildRequires:  glibc-libc32
 
+Requires:       ca-certs
 Requires:       p11-kit
 
 Patch1: 0001-Add-Clear-Linux-standard-CFLAGS.patch
@@ -46,14 +47,14 @@ Secure Socket Layer.
 
 
 %prep
-%setup -q -n openssl-1.0.2o
+%setup -q -n openssl-1.0.2p
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 pushd ..
-cp -a openssl-1.0.2o build32
+cp -a openssl-1.0.2p build32
 popd
 
 
