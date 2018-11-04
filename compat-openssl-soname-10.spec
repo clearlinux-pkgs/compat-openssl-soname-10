@@ -1,6 +1,6 @@
 Name:           compat-openssl-soname-10
 Version:        1.0.2p
-Release:        73
+Release:        74
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
@@ -62,7 +62,7 @@ popd
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 
-./config shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 no-engine    \
+./config shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 \
  --prefix=%{_prefix} \
  --openssldir=/etc/ssl \
  --openssldir_defaults=/usr/share/defaults/ssl \
@@ -76,7 +76,7 @@ pushd ../build32
 export CFLAGS="$CFLAGS -m32 -fno-lto" 
 export LDFLAGS="$LDFLAGS -m32 -fno-lto" 
 export CXXFLAGS="$CXXFLAGS -m32 -fno-lto" 
-i386 ./config shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 no-asm no-engine \
+i386 ./config shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 no-asm \
  --prefix=%{_prefix} \
  --openssldir=/etc/ssl \
  --openssldir_defaults=/usr/share/defaults/ssl \
@@ -140,8 +140,33 @@ make test
 %files lib
 /usr/lib64/libcrypto.so.1.0.0
 /usr/lib64/libssl.so.1.0.0
+/usr/lib64/engines/lib4758cca.so
+/usr/lib64/engines/libaep.so
+/usr/lib64/engines/libatalla.so
+/usr/lib64/engines/libcapi.so
+/usr/lib64/engines/libchil.so
+/usr/lib64/engines/libcswift.so
+/usr/lib64/engines/libgmp.so
+/usr/lib64/engines/libgost.so
+/usr/lib64/engines/libnuron.so
+/usr/lib64/engines/libpadlock.so
+/usr/lib64/engines/libsureware.so
+/usr/lib64/engines/libubsec.so
+
 
 %files lib32
 /usr/lib32/libcrypto.so.1.0.0
 /usr/lib32/libssl.so.1.0.0
+/usr/lib32/engines/lib4758cca.so
+/usr/lib32/engines/libaep.so
+/usr/lib32/engines/libatalla.so
+/usr/lib32/engines/libcapi.so
+/usr/lib32/engines/libchil.so
+/usr/lib32/engines/libcswift.so
+/usr/lib32/engines/libgmp.so
+/usr/lib32/engines/libgost.so
+/usr/lib32/engines/libnuron.so
+/usr/lib32/engines/libpadlock.so
+/usr/lib32/engines/libsureware.so
+/usr/lib32/engines/libubsec.so
 
