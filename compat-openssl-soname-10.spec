@@ -1,6 +1,6 @@
 Name:           compat-openssl-soname-10
 Version:        1.0.2q
-Release:        75
+Release:        76
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
