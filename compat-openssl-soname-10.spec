@@ -1,11 +1,11 @@
 Name:           compat-openssl-soname-10
-Version:        1.0.2q
-Release:        76
+Version:        1.0.2r
+Release:        78
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
 Group:          libs/network
-Source0:        http://www.openssl.org/source/openssl-1.0.2q.tar.gz
+Source0:        http://www.openssl.org/source/openssl-1.0.2r.tar.gz
 BuildRequires:  zlib-dev
 BuildRequires:  zlib-dev32
 BuildRequires:  util-linux-extras
@@ -23,7 +23,6 @@ Patch1: 0001-Add-Clear-Linux-standard-CFLAGS.patch
 Patch2: 0002-Remove-warning-in-non-fatal-absence-of-etc-ssl-opens.patch
 Patch3: 0003-Make-openssl-stateless-configuration.patch
 Patch4: 0004-Hide-a-symbol-from-Steam.patch
-Patch5: cve-2016-2178.patch
 
 %description
 Secure Socket Layer.
@@ -47,14 +46,14 @@ Secure Socket Layer.
 
 
 %prep
-%setup -q -n openssl-1.0.2q
+%setup -q -n openssl-1.0.2r
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
+
 pushd ..
-cp -a openssl-1.0.2q build32
+cp -a openssl-1.0.2r build32
 popd
 
 
