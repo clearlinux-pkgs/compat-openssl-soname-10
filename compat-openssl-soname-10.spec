@@ -1,6 +1,7 @@
+%global debug_package %{nil}
 Name:           compat-openssl-soname-10
 Version:        1.0.2r
-Release:        78
+Release:        79
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
