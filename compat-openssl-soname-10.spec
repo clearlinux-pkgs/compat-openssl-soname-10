@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 Name:           compat-openssl-soname-10
-Version:        1.0.2r
-Release:        79
+Version:        1.0.2t
+Release:        80
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
 Group:          libs/network
-Source0:        http://www.openssl.org/source/openssl-1.0.2r.tar.gz
+Source0:        https://www.openssl.org/source/openssl-1.0.2t.tar.gz
 BuildRequires:  zlib-dev
 BuildRequires:  zlib-dev32
 BuildRequires:  util-linux-extras
@@ -47,14 +47,14 @@ Secure Socket Layer.
 
 
 %prep
-%setup -q -n openssl-1.0.2r
+%setup -q -n openssl-1.0.2t
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 
 pushd ..
-cp -a openssl-1.0.2r build32
+cp -a openssl-1.0.2t build32
 popd
 
 
