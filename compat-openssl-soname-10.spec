@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 Name:           compat-openssl-soname-10
 Version:        1.0.2t
-Release:        80
+Release:        81
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
@@ -73,9 +73,9 @@ make depend
 make
 
 pushd ../build32
-export CFLAGS="$CFLAGS -m32 -fno-lto" 
-export LDFLAGS="$LDFLAGS -m32 -fno-lto" 
-export CXXFLAGS="$CXXFLAGS -m32 -fno-lto" 
+export CFLAGS="$CFLAGS -m32 -fno-lto -mstackrealign"
+export LDFLAGS="$LDFLAGS -m32 -fno-lto -mstackrealign"
+export CXXFLAGS="$CXXFLAGS -m32 -fno-lto -mstackrealign"
 i386 ./config shared no-ssl zlib-dynamic no-rc4 no-ssl2 no-ssl3 no-asm \
  --prefix=%{_prefix} \
  --openssldir=/etc/ssl \
@@ -87,19 +87,24 @@ popd
 
 
 %install
+
+CFLAGS_ORIG="$CFLAGS"
+LDFLAGS_ORIG="$LDFLAGS"
+CXXFLAGS_ORIG="$CXXFLAGS"
+
 pushd ../build32
-export CFLAGS="$CFLAGS -m32 -fno-lto" 
-export LDFLAGS="$LDFLAGS -m32 -fno-lto" 
-export CXXFLAGS="$CXXFLAGS -m32 -fno-lto" 
+export CFLAGS="$CFLAGS_ORIG -m32 -fno-lto -mstackrealign"
+export LDFLAGS="$LDFLAGS_ORIG -m32 -fno-lto -mstackrealign"
+export CXXFLAGS="$CXXFLAGS_ORIG -m32 -fno-lto -mstackrealign"
 make  INSTALL_PREFIX=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
 pushd %{buildroot}/usr/lib32/pkgconfig
 for i in *.pc ; do mv $i 32$i ; done
 popd
 popd
 
-export CFLAGS="$CFLAGS -m64 -flto" 
-export LDFLAGS="$LDFLAGS -m64 -flto" 
-export CXXFLAGS="$CXXFLAGS -m64 -flto" 
+export CFLAGS="$CFLAGS_ORIG -m64 -flto"
+export LDFLAGS="$LDFLAGS_ORIG -m64 -flto"
+export CXXFLAGS="$CXXFLAGS_ORIG -m64 -flto"
 
 make  INSTALL_PREFIX=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
 
