@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 Name:           compat-openssl-soname-10
 Version:        1.0.2t
-Release:        81
+Release:        82
 License:        OpenSSL
 Summary:        Secure Socket Layer
 Url:            http://www.openssl.org/
@@ -24,6 +24,9 @@ Patch1: 0001-Add-Clear-Linux-standard-CFLAGS.patch
 Patch2: 0002-Remove-warning-in-non-fatal-absence-of-etc-ssl-opens.patch
 Patch3: 0003-Make-openssl-stateless-configuration.patch
 Patch4: 0004-Hide-a-symbol-from-Steam.patch
+
+# CVEs
+Patch5: CVE-2019-1551.patch
 
 %description
 Secure Socket Layer.
@@ -52,6 +55,7 @@ Secure Socket Layer.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 pushd ..
 cp -a openssl-1.0.2t build32
